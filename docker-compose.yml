@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  certbot:
+    build: ./nginx
+    container_name: certbot
+    links:
+      - app:${DOMAIN_NAME}
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+    restart: unless-stopped
+    environment:
+      - CERTBOT_EMAIL=email@example.com
+      - DOMAIN_NAME=example.com
+  ${APP_NAME}:
+    build: ./${APP_NAME}
+    container_name: ${APP_NAME}
+    restart: always
