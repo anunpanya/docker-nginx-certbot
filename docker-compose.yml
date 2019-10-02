@@ -11,8 +11,8 @@ services:
       - 443:443/tcp
     restart: unless-stopped
     environment:
-      - CERTBOT_EMAIL=email@example.com
-      - DOMAIN_NAME=example.com
+      - CERTBOT_EMAIL=email@company.com
+      - DOMAIN_NAME=company.com
   ${APP_NAME}:
     build: ./${APP_NAME}
     container_name: ${APP_NAME}
